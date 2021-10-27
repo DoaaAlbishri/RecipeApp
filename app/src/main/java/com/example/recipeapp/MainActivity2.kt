@@ -12,7 +12,8 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class MainActivity2 : AppCompatActivity() {
-    val words = arrayListOf<String>()
+    //val words = arrayListOf<String>()
+    val words = arrayListOf<RecipeDetails.Datum>()
     lateinit var myRv : RecyclerView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,12 +38,13 @@ class MainActivity2 : AppCompatActivity() {
             {
                 progressDialog.dismiss()
                 val resource: List<RecipeDetails.Datum>? = response.body()
-                var recipeData:String? = "";
+                //var recipeData:String? = "";
                 for(Recipe in resource!!){
-                    recipeData = recipeData +Recipe.title+ "\n"+Recipe.author + "\n"+Recipe.ingredients + "\n"+Recipe.instructions +"\n"+"\n"
+                  //  recipeData = recipeData +Recipe.title+ "\n"+Recipe.author + "\n"+Recipe.ingredients + "\n"+Recipe.instructions +"\n"+"\n"
+                    words.add(Recipe)
                 }
              //textView.text= recipeData
-                words.add(recipeData.toString())
+             //   words.add(recipeData.toString())
                 rv()
             }
             override fun onFailure(call: Call<List<RecipeDetails.Datum>>, t: Throwable) {

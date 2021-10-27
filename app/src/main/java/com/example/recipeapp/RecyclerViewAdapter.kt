@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.item_row.view.*
 
-class RecyclerViewAdapter(private val words: ArrayList<String>) : RecyclerView.Adapter<RecyclerViewAdapter.ItemViewHolder>(){
+class RecyclerViewAdapter(private val words: ArrayList<RecipeDetails.Datum>) : RecyclerView.Adapter<RecyclerViewAdapter.ItemViewHolder>(){
     class ItemViewHolder(itemView : View) :RecyclerView.ViewHolder(itemView)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
@@ -23,7 +23,11 @@ class RecyclerViewAdapter(private val words: ArrayList<String>) : RecyclerView.A
         val word=words[position]
 
         holder.itemView.apply{
-            tv.text=word
+            tvTitle.text=word.title
+            tvID.text= word.id.toString()
+            tvAuthor.text=word.author
+            tvIngredients.text=word.ingredients
+            tvInstructions.text=word.instructions
         }
 
 
